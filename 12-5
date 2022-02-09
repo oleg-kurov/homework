@@ -1,0 +1,5 @@
+**calicoctl version**
+Client Version:    v3.21.2
+Git commit:        17461419
+Cluster Version:   v3.21.2
+Cluster Type:      kubespray,bgp,kubeadm,kdd,k8s
