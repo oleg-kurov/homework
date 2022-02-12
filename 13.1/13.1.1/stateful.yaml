@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+  labels:
+    k8s-app: postgres
+spec:
+  serviceName: "postgres"
+  replicas: 1
+  podManagementPolicy: "Parallel"
+  selector:
+    matchLabels:
+      k8s-app: postgres
+  template:
+    metadata:
+      labels:
+        k8s-app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:13-alpine
+
+          env:
+            - name: POSTGRES_PASSWORD
+              value: postgres
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_BD
+              value: news

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backfront
+  labels:
+    app: backfront
+spec:
+  type: ClusterIP
+  selector:
+    app: backfront
+  ports:
+    - port: 80
+      name: front
+    - port: 9000
+      name: back

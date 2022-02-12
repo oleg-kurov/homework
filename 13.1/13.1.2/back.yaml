@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: back
+  name: back
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: back
+  template:
+    metadata:
+      labels:
+        app: back
+    spec:
+      containers:
+      - image: 7zgymko/back:v1
+        imagePullPolicy: IfNotPresent
+        name: back
+        env:
+          - name: DATABASE_URL
+            value: "postgres://postgres:postgres@db:5432/news"

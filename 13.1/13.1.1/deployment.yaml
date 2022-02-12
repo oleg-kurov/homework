@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: backFront
+  name: backFront
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backFront
+  template:
+    metadata:
+      labels:
+        app: backFront
+    spec:
+      containers:
+      - image: 7zgymko/front:v1
+        imagePullPolicy: IfNotPresent
+        name: front
+      - image: 7zgymko/back:v1
+        imagePullPolicy: IfNotPresent
+        name: back
+        env:
+          - name: BASE_URL
+            value: "http://localhost:9000"
+          - name: DATABASE_URL
+            value: "postgres://postgres:postgres@db:5432/news"
